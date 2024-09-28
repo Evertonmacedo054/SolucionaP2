@@ -1,0 +1,18 @@
+
+Acabei de criar novos arquivos pastas etc:
+* uso o comando:  git add . para adiconar as pasta,arquivos para o github
+
+Quero adiconar comentario (commit) exe: "primeira commit" 
+* git commit -m "teste"
+
+Por ultimo, para subir tudo para  o git uso git push
+
+Você pode fazer tudo isso de forma mais simples, usando diretamente o vscode
+
+
+
+Caso seja nescessario, ativar o ambiente virtual, no cmd ou powershell.
+* na pasta do projeto, execute .venv\Scripts\activate
+
+
+
