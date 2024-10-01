@@ -1,19 +1,22 @@
+<!--sobre o sistema-->
+
+<!--teste-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>estudo</title>
+    <title>Document</title>
 </head>
 <body>
-    <div>
-        <h3>Estudo flask</h3>
-        <h5>@everton</h5>
-    </div>
-    <div>
-        <p>Bem vindo</p>
-        <a href="{{url_for('teste')}}">Link para a página de teste!</a>
-     
-    </div>
+    <nav>
+        <ul>
+            <li><a href="{{url_for('login')}}">Login aqui!</a></li>
+            <li><a href="{{url_for('ocorrencia')}}">ocorrência aqui!</a></li>
+            <li><a href="{{url_for('cadastro')}}">cadastro aqui!</a></li>
+        </ul>
+        
+    </nav>
 </body>
 </html>
