@@ -2,9 +2,8 @@
 
 # 🏙️ SolucionaPII
 
-![Logo do Sistema](path/to/logo.png)
-![Tela Inicial](path/to/screenshot1.png)
-![Formulário de Ocorrência](path/to/screenshot2.png)
+<img src=""></img>
+<img src=""></img>
 
 ## 📜 Sobre o sistema
 
