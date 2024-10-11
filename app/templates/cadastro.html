@@ -1,13 +1,75 @@
-<!---Cadastro-->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Sistema web para descrição de problemas urbanos na cidade de Pedro II - Piauí"> 
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="./css/style-cadastro.css"> 
 </head>
 <body>
-    <h1>cadastro aqui!</h1>
+
+    <main>
+        <section class="principal">
+            <img class="imagem-sistema" src="./images/img-robo-sistema.png" alt="Imagem do sistema SolucionaPII">
+
+            <div class="card-cadastro">
+                <h4 class="titulo-cadastro">Cadastro</h4>
+                
+                <form class="formulario" action="#" method="POST">
+                    <div class="campo-grupo lado-a-lado">
+                        <div class="campo-lado">
+                            <label for="usuario" class="formulario-label">Nome:</label>
+                            <input type="text" class="formulario-input" id="usuario" name="usuario" placeholder="Nome" required>
+                        </div>
+                        <div class="campo-lado">
+                            <label for="sobrenome" class="formulario-label">Sobrenome:</label>
+                            <input type="text" class="formulario-input" id="sobrenome" name="sobrenome" placeholder="Sobrenome" required>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="cpf" class="formulario-label">CPF:</label>
+                        <input type="text" class="formulario-input" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="numero" class="formulario-label">Bairro:</label>
+                        <input type="text" class="formulario-input" id="numero" name="numero" placeholder="Ex: Vila Kolping" required>
+                    </div>
+
+                    <div class="campo-grupo lado-a-lado">
+                        <div class="campo-lado">
+                            <label for="endereco" class="formulario-label">Endereço:</label>
+                            <input type="text" class="formulario-input" id="endereco" name="endereco" placeholder="Ex: Rua Sete de Setembro" required>
+                        </div>
+                        <div class="campo-lado">
+                            <label for="numero" class="formulario-label">Número:</label>
+                            <input type="text" class="formulario-input" id="numero" name="numero" placeholder="Ex: 999" required>
+                        </div>
+                    </div>                    
+
+                    <div class="campo-grupo">
+                        <label for="email" class="formulario-label">Email:</label>
+                        <input type="email" class="formulario-input" id="email" name="email" placeholder="Ex: email@gmail.com" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="senha" class="formulario-label">Senha:</label>
+                        <input type="password" class="formulario-input" id="senha" name="senha" placeholder="Digite sua senha" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label for="confirmaSenha" class="formulario-label">Confirmar Senha:</label>
+                        <input type="password" class="formulario-input" id="confirmaSenha" name="confirmaSenha" placeholder="Confirme sua senha" required>
+                    </div>
+            
+                    <button class="botao-enviar" type="submit">Enviar</button>
+                </form>
+                
+                <p class="paragrafo-voltar">Já têm uma conta? <a href="login.html" class="voltar"> Login</a></p>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
