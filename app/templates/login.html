@@ -1,13 +1,35 @@
-<!--Login-->
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="pt-br">
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-  <h1>Login aqui!</h1>
-</body>
+    <meta name="description" content="Sistema web para descrição de problemas urbanos na cidade de Pedro II - Paiuí">
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/style-login.css">
+  </head>
+
+  <body>
+    <main class="principal">
+      <section class="imagem-principal">
+        <img src="./images/img-robo-sistema.png" alt="Imagem do Sistema" class="imagem-sistema">
+      </section>
+
+      <section class="login">
+        <div>
+        <h4 class="titulo-formulario">Bem-Vindo(a) a SolucionaP2!</h4>
+        <p class="p-formulario">Site web para descrição de problemas urbanos na cidade de Pedro II-PI</p>
+
+        <form class="formulario">
+          <label for="usuario" class="formulario-label">Usuário:</label>
+          <input class="formulario-input" type="text" id="usuario" placeholder="Digite seu usuário">
+
+          <label for="senha" class="formulario-label">Senha:</label>
+          <input class="formulario-input" type="password" id="senha" placeholder="Digite sua senha">
+          <a href="esqueceusenha.html" target="_blank" class="esqueceu-senha">Esqueceu a senha?</a><br>
+          <button type="submit" class="botao-entrar">Entrar</button>
+          <p class="cadastro">Novo por aqui? <a href="cadastro.html"> Cadastre-se</a></p>
+        </form>
+      </section>
+    </main>
+  </body>
 </html>
