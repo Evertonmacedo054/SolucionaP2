@@ -9,25 +9,25 @@
 
 body{
     font-family: 'kanit', system-ui;
-}
-
-body::selection{
-    background-color: #335c67b8;
-    color: white;
+    color: black;
 }
 
 header, footer {
-    background-color: #335c67;
+    background-color: #02B577;
+}
+
+.img-logo{
+    padding: 10px 0 0;
+    margin-left: 150px;
 }
 
 .nav-item{
     border-radius: 6px;
 }
+
 .nav-item:hover{
-    background-color: #02B577;
-}
-img{
-    margin-left: 180px;
+    background-color: #F65628;
+    color: black;
 }
 
 p {
@@ -48,3 +48,6 @@ p {
     height: 200px;
 }
 
+#footer{
+    color: black;
+}
