@@ -12,8 +12,7 @@
   <body>
     <main class="principal">
       <section class="imagem-principal">
-        <img src="{{ url_for('static', filename='images/img-robo-sistema.png') }}" alt="Imagem do Sistema" class="imagem-sistema">
-        
+        <video src="../static/images/robo-video-sistema.mp4" autoplay loop muted></video>
       </section>
         
       <section class="login">
@@ -25,10 +24,14 @@
           
           <label for="nome" class="formulario-label">Usuário:</label>
           <input class="formulario-input" type="text" id="nome" name="nome" placeholder="Digite seu usuário">
+          <br>
 
           <label for="senha" class="formulario-label">Senha:</label>
           <input class="formulario-input" type="password" id="senha" name="senha"    placeholder="Digite sua senha">
+          <br>
+          
           <a href="esqueceusenha.html" target="_blank" class="esqueceu-senha">Esqueceu a senha?</a><br>
+          
           <button type="submit" class="botao-entrar">Entrar</button>
 
           <p class="cadastro">Novo por aqui? <a href="{{url_for('cadastro_usuario')}}"> Cadastre-se</a></p> <!--{{url_for('cadastro_usuario')}}-->
