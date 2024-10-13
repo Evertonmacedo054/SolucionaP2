@@ -94,6 +94,11 @@ span{
 .colunas{
   font-size: 20px;
 }
+
+video{
+  width: 100px;
+  height: 100px;
+}
 .botao-voltar{
   transition: 1s;
   width: 270px;

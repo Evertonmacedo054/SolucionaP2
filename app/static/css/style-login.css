@@ -16,7 +16,6 @@ body {
   height: 100vh;
   font-weight: 300;
   font-style: normal;
-  background: linear-gradient(90deg, rgba(245,239,235,1) 0%, rgba(2,181,119,1) 100%);
 }
 
 .principal {
@@ -27,8 +26,8 @@ body {
 }
 
 
-.imagem-sistema {
-  width: 500px;
+video {
+  width: 700px;
   height: 500px;
   height: auto;
   align-items: center;
@@ -39,7 +38,7 @@ body {
   align-items: center;
   background-color: #ffffff;
   height: 500px;
-  width: 500px;
+  width: 700px;
   padding: 10px;
   border-radius: 10px;
 }
@@ -56,13 +55,15 @@ body {
   text-align: center;
   font-weight: bold;
   color: #02B577;
-  font-size: 26px;
+  font-size: 39px;
+  width: 120%;
+  margin-left: -30px;
   letter-spacing: 1px;
   margin-top: 40px;
 }
 
 .p-formulario{
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   text-align: center;
 
@@ -126,5 +127,4 @@ body {
   color: #02B577;
   text-decoration: none;
 }
-
-
+  

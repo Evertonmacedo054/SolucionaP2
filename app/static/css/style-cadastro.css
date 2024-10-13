@@ -7,6 +7,11 @@
     text-decoration: none;
 }
 
+main{
+    width: 90%;
+    
+}
+
 body {
     font-family: "Kanit", sans-serif;
     margin: auto;
@@ -16,20 +21,18 @@ body {
     height: 100vh;
     font-weight: 300;
     font-style: normal;
-    background: linear-gradient(90deg, rgba(245,239,235,1) 0%, rgba(2,181,119,1) 100%);
 }
 
 .card-cadastro {
+    border: 2px solid #02B577;
+    border-radius: 6px;
+    padding: 10px 10px;
+    margin: 40px 0 40px;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
-    padding: 20px; 
-    border-radius: 10px;
-    width: 60%; 
-    max-width: 600px; 
-    max-height: 500px; 
-    overflow-y: auto; 
-    position: relative; 
+    width: 40%;
+    max-width: 700px;
+    float: right;
 }
 
 .principal {
@@ -39,26 +42,23 @@ body {
     gap: 20px;
 }
 
-.imagem-sistema {
-    width: 60%; 
+video {
     max-width: 600px; 
-    height: 500px; 
-    object-fit: cover; 
+    margin-right: 40px;
 }
 
 .titulo-cadastro {
     text-align: center;
     font-weight: bold;
-    font-size: 29px; 
-    margin-bottom: 15px;
+    font-size: 34px; 
     letter-spacing: 2px;
-
 }
 
 .formulario {
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    padding: 10px 10px;
+    margin: -10px 0 -10px;
 }
 
 .campo-grupo {
@@ -79,14 +79,14 @@ body {
 }
 
 .formulario-label {
-    margin-bottom: 5px; 
+    margin-bottom: 10px; 
 }
 
 .formulario-input {
     width: 100%; 
     padding: 10px; 
-    border-color: #000000;
     border-radius: 5px; 
+    border-color: #000000;
 }
 
 .formulario-input:hover{
@@ -99,7 +99,7 @@ body {
     width: 150px;
     margin-left: 35%;
     margin-top: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     padding: 10px; 
     background-color: #02B577;
     color: #000000;
@@ -118,6 +118,7 @@ body {
 .paragrafo-voltar{
     text-align: center;
 }
+
 .voltar {
     color: #02B577;
     margin-top: 10px;
