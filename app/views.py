@@ -11,9 +11,19 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 # PRINCIPAL 
 
+# teste
 @app.route('/')
+def teste():
+    return render_template('teste.html')
+
+@app.route('/index/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/sobre/')
+def sobre():
+    return render_template('sobre.html')
 
 # LOGIN USUARIO 
 
@@ -28,7 +38,7 @@ def login_usuario():
             session['nome'] = nome
             session['usuario_id'] = user.id
             flash('Login bem-sucedido!', 'success')
-            return redirect(url_for('index')) 
+            return redirect(url_for('sobre')) 
         else:
             flash('Nome de usuário ou senha incorretos. Tente novamente.', 'error')
     return render_template('login.html')
@@ -49,12 +59,20 @@ def cadastro_usuario():
     if request.method == 'POST':
         nome = request.form.get('nome')  
         senha = request.form.get('senha')
+        confirma_senha = request.form.get('confirma_senha')
         email = request.form.get('email')
         cpf = request.form.get('cpf')
         sobrenome = request.form.get("sobrenome")
-        rua = request.form.get("rua")
+        endereco = request.form.get('endereco')
         numero_casa = request.form.get("numero_casa")
         bairro = request.form.get("bairro")
+
+        ######################################
+        if senha != confirma_senha:
+            flash('As senhas não coincidem. Tente novamente.', 'danger')
+            return redirect(url_for('cadastro_usuario'))
+        ########################################
+
         cripto_senha = generate_password_hash(senha)
         novo_usuario = Usuario (
             nome=nome,
@@ -62,7 +80,7 @@ def cadastro_usuario():
             email=email, 
             cpf=cpf,
             sobrenome = sobrenome,
-            rua=rua,
+            endereco = endereco,
             numero_casa = numero_casa,
             bairro = bairro
             )
@@ -80,8 +98,11 @@ def cadastro_usuario():
 @app.route('/registrar_ocorrencia/', methods=['GET', 'POST'])
 def registrar_ocorrencia():
     if request.method == 'POST':
-        usuario_id = session.get('usuario_id') 
-        localizacao = request.form.get('localizacao')
+        usuario_id = session.get('usuario_id')
+        nome = session.get('nome')
+        sobrenome = session.get('sobrenome')
+        bairro = session.get('bairro')
+        # localizacao = request.form.get('localizacao')
         tipo_problema = request.form.get('tipo_problema')
         descricao = request.form.get('descricao')
         imagem = request.files['imagem'] 
@@ -89,10 +110,13 @@ def registrar_ocorrencia():
         
         nova_ocorrencia = Ocorrencia(
             usuario_id=usuario_id,
-            localizacao=localizacao,
+            # localizacao=localizacao,
             tipo_problema=tipo_problema,
             descricao=descricao,
-            imagem=nome_seguro
+            imagem=nome_seguro,
+            sobrenome = sobrenome,
+            bairro = bairro,
+            nome = nome
         )
 
         caminho = os.path.join(

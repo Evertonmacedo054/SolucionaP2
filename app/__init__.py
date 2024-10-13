@@ -16,7 +16,7 @@ app.config['SECRET_KEY'] = '9393w@#&83545*&dj2'
 app.config['UPLOAD_FILES'] = r'static/data'
 
 
-from app.views import cadastro_usuario,login_usuario,registrar_ocorrencia,listar_ocorrencias
+from app.views import cadastro_usuario,login_usuario,registrar_ocorrencia,listar_ocorrencias,index,sobre,sair
 from app.models import Usuario,Ocorrencia
 
 
