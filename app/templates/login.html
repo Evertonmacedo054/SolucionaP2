@@ -1,13 +1,52 @@
-<!--Login-->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Faça Login</title>
+    <!-- Incluindo o MaterializeCSS via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
+
 <body>
-  <h1>Login aqui!</h1>
+
+    <div class="container">
+        <h5>Login</h5>
+        <!-- Mensagens de sucesso ou erro -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div
+            class="card {% if category == 'error' %}red lighten-3{% elif category == 'success' %}green lighten-3{% endif %}">
+            <div class="card-content">
+                <span class="card-title">{{ category.capitalize() }}</span>
+                <p>{{ message }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <!-- Formulário de login -->
+        <form action="{{ url_for('login_usuario') }}" method="POST">
+            <div class="input-field">
+                <input id="nome" type="text" name="nome" class="validate">
+                <label for="nome">Nome</label>
+            </div>
+            <div class="input-field">
+                <input id="senha" type="password" name="senha" class="validate">
+                <label for="senha">Senha</label>
+            </div>
+            <button class="" type="submit" name="action">Login
+
+
+            </button>
+            <p>Não possui conta? <a href="{{url_for('cadastro_usuario')}}">Cria conta</a></p>
+        </form>
+    </div>
+
+    <!-- Incluindo o MaterializeJS via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
+
 </html>

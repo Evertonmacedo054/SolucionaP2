@@ -1,0 +1,5 @@
+
+cadastrar usuario 
+registra o ocorrencia
+login usuario
+

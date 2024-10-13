@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Ocorrência</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h5>Registrar Ocorrência</h5>
+        <form action="{{ url_for('registrar_ocorrencia') }}" method="POST" enctype="multipart/form-data">
+            <!-- Localização -->
+            <div class="input-field">
+                <label for="localizacao">Localização</label>
+                <input type="text" id="localizacao" name="localizacao" required>
+            </div>
+
+            <!-- Tipo de Problema -->
+            <div class="input-field">
+                <label for="tipo_problema">Tipo de Problema</label>
+                <input type="text" id="tipo_problema" name="tipo_problema" required>
+            </div>
+
+            <!-- Descrição -->
+            <div class="input-field">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" name="descricao" class="materialize-textarea"></textarea>
+            </div>
+
+            <!-- Imagem -->
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Escolher Imagem</span>
+                    <input type="file" id="imagem" name="imagem" required>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Escolha uma imagem">
+                </div>
+            </div>
+
+            <!-- Botão de Enviar -->
+            <div class="input-field">
+                <button type="submit" class="btn">Registrar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>

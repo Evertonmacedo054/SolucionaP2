@@ -1,7 +1,6 @@
 <!--sobre o sistema-->
 
 <!--teste-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +11,14 @@
 <body>
     <nav>
         <ul>
-            <li><a href="{{url_for('login')}}">Login aqui!</a></li>
-            <li><a href="{{url_for('ocorrencia')}}">ocorrência aqui!</a></li>
-            <li><a href="{{url_for('cadastro')}}">cadastro aqui!</a></li>
-            <h1>principal</h1> <!--teste-->
+            <li><a href="{{url_for('registrar_ocorrencia')}}">Ocorrência</a></li>
+            <li><a href="{{ url_for('sair') }}">Logout</a>
+            <li><a href="{{ url_for('listar_ocorrencias') }}">Lista ocorrencia</a>
+            <li><a href="{{ url_for('login_usuario') }}">login</a>
+          
+
+           
         </ul>
-        
     </nav>
 </body>
 </html>
