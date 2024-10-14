@@ -105,13 +105,10 @@ def registrar_ocorrencia():
         usuario_id = session.get('usuario_id')
         nome = session.get('nome')
         sobrenome = session.get('sobrenome')
-
         bairro = request.form.get('bairro')
         tipo_problema = request.form.get('tipo_problema')
-        
         outro_problema = request.form.get('outro-problema') if tipo_problema == 'outro' else None
         nome_interior = request.form.get('nome_interior')
-        
         descricao = request.form.get('descricao')
         imagem = request.files['imagem'] 
         nome_seguro = secure_filename(imagem.filename)
@@ -146,10 +143,49 @@ def registrar_ocorrencia():
 
 # LISTA OCORRENCIA
 
+# @app.route('/ocorrencias/', methods=['GET'])
+# def listar_ocorrencias():
+#     ocorrencias = db.session.query(Ocorrencia, Usuario).join(Usuario, Ocorrencia.usuario_id == Usuario.id).all()
+#     return render_template('listar_ocorrencias.html', ocorrencias=ocorrencias)
+
 @app.route('/ocorrencias/', methods=['GET'])
 def listar_ocorrencias():
-    ocorrencias = db.session.query(Ocorrencia, Usuario).join(Usuario, Ocorrencia.usuario_id == Usuario.id).all()
-    return render_template('listar_ocorrencias.html', ocorrencias=ocorrencias)
+    ocorrencias = db.session.query(Ocorrencia).join(Usuario).all()
+    usuario_logado_id = session.get('usuario_id') 
+
+    dados_ocorrencias = []
+    for ocorrencia in ocorrencias:
+        usuario = Usuario.query.get(ocorrencia.usuario_id)
+        dados_ocorrencias.append((ocorrencia, usuario))
+
+    return render_template('listar_ocorrencias.html', ocorrencias=dados_ocorrencias, usuario_logado_id=usuario_logado_id)
 
 
-## crud e listar ocorrencias faltantes
+
+
+@app.route('/editar_ocorrencia/<int:id>/', methods=['GET', 'POST'])
+def editar_ocorrencia(id):
+    ocorrencia = Ocorrencia.query.get(id)
+    if not ocorrencia:
+        flash('Ocorrência não encontrada.', 'error')
+        return redirect(url_for('listar_ocorrencias'))
+
+    if request.method == 'POST':
+        ocorrencia.descricao = request.form.get('descricao')
+        ocorrencia.tipo_problema = request.form.get('tipo_problema')
+        db.session.commit()
+        flash('Ocorrência editada com sucesso!', 'success')
+        return redirect(url_for('listar_ocorrencias'))
+
+    return render_template('editar_ocorrencia.html', ocorrencia=ocorrencia)
+@app.route('/excluir_ocorrencia/<int:id>/', methods=['POST'])
+def excluir_ocorrencia(id):
+    ocorrencia = Ocorrencia.query.get(id)
+    if ocorrencia:
+        db.session.delete(ocorrencia)
+        db.session.commit()
+        flash('Ocorrência excluída com sucesso!', 'success')
+    else:
+        flash('Ocorrência não encontrada.', 'error')
+    
+    return redirect(url_for('listar_ocorrencias'))

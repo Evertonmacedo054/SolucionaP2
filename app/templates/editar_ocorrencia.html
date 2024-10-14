@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Edição de Ocorrência">
+    <title>Editar Ocorrência</title>
+</head>
+<body>
+    <h1>Editar Ocorrência</h1>
+    <form method="POST">
+        <div>
+            <label for="descricao">Descrição:</label>
+            <textarea name="descricao" required>{{ ocorrencia.descricao }}</textarea>
+        </div>
+        <div>
+            <label for="tipo_problema">Tipo de Problema:</label>
+            <input type="text" name="tipo_problema" value="{{ ocorrencia.tipo_problema }}" required>
+        </div>
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{{ url_for('listar_ocorrencias') }}">Voltar</a>
+</body>
+</html>
