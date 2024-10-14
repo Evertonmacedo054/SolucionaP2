@@ -36,6 +36,7 @@ def login_usuario():
         
         if user and check_password_hash(user.senha, senha):
             session['nome'] = nome
+            session['sobrenome'] = user.sobrenome  # Adiciona o sobrenome à sessão
             session['usuario_id'] = user.id
             flash('Login bem-sucedido!', 'success')
             return redirect(url_for('sobre')) 
@@ -67,11 +68,14 @@ def cadastro_usuario():
         numero_casa = request.form.get("numero_casa")
         bairro = request.form.get("bairro")
 
-        ######################################
         if senha != confirma_senha:
             flash('As senhas não coincidem. Tente novamente.', 'danger')
             return redirect(url_for('cadastro_usuario'))
-        ########################################
+        
+       # validações aqui
+
+
+       ##################
 
         cripto_senha = generate_password_hash(senha)
         novo_usuario = Usuario (
@@ -101,22 +105,28 @@ def registrar_ocorrencia():
         usuario_id = session.get('usuario_id')
         nome = session.get('nome')
         sobrenome = session.get('sobrenome')
-        bairro = session.get('bairro')
-        # localizacao = request.form.get('localizacao')
+
+        bairro = request.form.get('bairro')
         tipo_problema = request.form.get('tipo_problema')
+        
+        outro_problema = request.form.get('outro-problema') if tipo_problema == 'outro' else None
+        nome_interior = request.form.get('nome_interior')
+        
         descricao = request.form.get('descricao')
         imagem = request.files['imagem'] 
         nome_seguro = secure_filename(imagem.filename)
         
         nova_ocorrencia = Ocorrencia(
             usuario_id=usuario_id,
-            # localizacao=localizacao,
             tipo_problema=tipo_problema,
             descricao=descricao,
             imagem=nome_seguro,
             sobrenome = sobrenome,
             bairro = bairro,
-            nome = nome
+            nome = nome,
+            
+            nome_interior = nome_interior,
+            outro_problema = outro_problema
         )
 
         caminho = os.path.join(
@@ -132,7 +142,7 @@ def registrar_ocorrencia():
         
         flash('Ocorrência registrada com sucesso!', 'success')
         return redirect(url_for('index'))
-    return render_template('registrar_ocorrencia.html')
+    return render_template('ocorrencia.html')
 
 # LISTA OCORRENCIA
 
@@ -142,3 +152,4 @@ def listar_ocorrencias():
     return render_template('listar_ocorrencias.html', ocorrencias=ocorrencias)
 
 
+## crud e listar ocorrencias faltantes

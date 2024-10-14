@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style-ocorrencia.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Relatar Ocorrência</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="style-ocorrencia.css"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style-ocorrencia.css') }}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>Relatar Ocorrência</title>
 </head>
+
 <body>
-    <main>
-      <form class="form-ocorrencia">
-        <h4>Relatar Ocorrência</h4>
-        <p>Ajude a cidade a melhorar relatando problemas de sua região!</p>
-        
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="nome">Nome:</label>
-            <input type="text" class="form-control" id="nome" placeholder="Nome">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="sobrenome">Sobrenome:</label>
-            <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome">
-          </div>
+  <main>
+    <!-- <form class="form-ocorrencia"> -->
+      <form class="form-ocorrencia" action="{{ url_for('registrar_ocorrencia') }}" method="POST" enctype="multipart/form-data">
+        <!--add -->
+      <h4>Relatar Ocorrência</h4>
+      <p>Ajude a cidade a melhorar relatando problemas de sua região!</p>
+<!-- 
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nome">Nome:</label>
+          <input type="text" class="form-control" id="nome" placeholder="Nome">
         </div>
-              
+        <div class="form-group col-md-6">
+          <label for="sobrenome">Sobrenome:</label>
+          <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome">
+        </div>
+      </div> -->
+    <!---------------------------------------13/10/2024-->
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nome">Nome:</label>
+          <input type="text" class="form-control" id="nome" name="nome" value="{{ session.get('nome') }}" readonly>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="sobrenome">Sobrenome:</label>
+          <input type="text" class="form-control" id="sobrenome" name="sobrenome" value="{{ session.get('sobrenome') }}"readonly>
+        </div>
+      </div>
+      <!-------------------------------------------------------------->
+
       <div class="form-group">
-        <label for="geolocation">Bairro:</label>
-        <select class="form-control" id="geolocation" onchange="mostrarCampoInterior()">
+        <label for="bairro">Bairro:</label>
+        <select class="form-control" id="bairro" name="bairro" onchange="mostrarCampoInterior()">
           <option value="">Selecione o bairro</option>
           <option>Alto São Sebastião</option>
           <option>Areia Branca</option>
@@ -54,12 +71,12 @@
         </select>
         <br>
 
-        <label for="nome-interior">Nome do Interior:</label>
-        <input type="text" class="form-control" id="nome-interior" placeholder="Digite o nome do interior">
+        <label for="nome_interior">Nome do Interior:</label>
+        <input type="text" class="form-control" id="nome_interior" name="nome_interior"   placeholder="Digite o nome do interior">
         <br>
-    
-        <label for="tipo-problema">Tipo de Problema</label>
-        <select class="form-control" id="tipo-problema" onchange="mostrarCampoOutroProblema()">
+
+        <label for="tipo_problema">Tipo de Problema</label>
+        <select class="form-control" id="tipo_problema" name="tipo_problema" onchange="mostrarCampoOutroProblema()">
           <option value="">Selecione o problema</option>
           <option>Buraco na rua</option>
           <option>Iluminação pública</option>
@@ -76,57 +93,58 @@
           <option value="outro">Outro</option>
         </select>
         <br>
-      
+
         <label for="outro-problema">Qual é o tipo de problema?</label>
-        <input type="text" class="form-control" id="outro-problema" placeholder="Digite o tipo de problema">
+        <input type="text" class="form-control" id="outro-problema" name="outro-problema" placeholder="Digite o tipo de problema">
         <br>
 
         <label for="descricao">Descrição Detalhada:</label>
-        <textarea class="form-control" id="descricao" rows="3" placeholder="Descreva o problema"></textarea>
+        <textarea class="form-control" id="descricao" rows="3" name="descricao"  placeholder="Descreva o problema"></textarea>
         <br>
 
-        <label for="fotos">Envio de Arquivos:</label>
-        <input type="file" class="form-control-file" id="fotos">
-
+        <label for="imagem">Envio de Arquivos:</label> 
+        <input type="file" class="form-control-file" id="imagem" name="imagem"> 
+        
         <button type="submit" class="botao-ocorrencia">Enviar Ocorrência</button>
       </div>
     </form>
     <a href="index.html"><video src="../static/images/lupa-video-sistema-nome.mp4" autoplay loop muted></video></a>
-  </section>
+    </section>
 
-  <footer>
-    <p>© ADS III - Todos os direitos reservados</p>
-  </footer>
-</main>
+    <footer>
+      <p>© ADS III - Todos os direitos reservados</p>
+    </footer>
+  </main>
 
-    <script>
-        // Função para exibir ou ocultar o campo de texto para o interior
-        function mostrarCampoInterior() {
-          var selectGeolocation = document.getElementById('geolocation');
-          var interiorInputContainer = document.getElementById('interior-input-container');
-          
-          if (selectGeolocation.value === 'interior') {
-            interiorInputContainer.style.display = 'block'; // Mostra o campo
-          } else {
-            interiorInputContainer.style.display = 'none'; // Esconde o campo
-          }
-        }
-    
-        // Função para exibir ou ocultar o campo de texto para "Outro" problema
-        function mostrarCampoOutroProblema() {
-          var selectTipoProblema = document.getElementById('tipo-problema');
-          var outroProblemaInputContainer = document.getElementById('outro-problema-input-container');
-          
-          if (selectTipoProblema.value === 'outro') {
-            outroProblemaInputContainer.style.display = 'block'; // Mostra o campo
-          } else {
-            outroProblemaInputContainer.style.display = 'none'; // Esconde o campo
-          }
-        }
-      </script>
+  <script>
+    // Função para exibir ou ocultar o campo de texto para o interior
+    function mostrarCampoInterior() {
+      var selectGeolocation = document.getElementById('geolocation');
+      var interiorInputContainer = document.getElementById('interior-input-container');
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      if (selectGeolocation.value === 'interior') {
+        interiorInputContainer.style.display = 'block'; // Mostra o campo
+      } else {
+        interiorInputContainer.style.display = 'none'; // Esconde o campo
+      }
+    }
+
+    // Função para exibir ou ocultar o campo de texto para "Outro" problema
+    function mostrarCampoOutroProblema() {
+      var selectTipoProblema = document.getElementById('tipo-problema');
+      var outroProblemaInputContainer = document.getElementById('outro-problema-input-container');
+
+      if (selectTipoProblema.value === 'outro') {
+        outroProblemaInputContainer.style.display = 'block'; // Mostra o campo
+      } else {
+        outroProblemaInputContainer.style.display = 'none'; // Esconde o campo
+      }
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
+
 </html>
