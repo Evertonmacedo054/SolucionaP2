@@ -34,5 +34,5 @@ O sistema é dividido em quatro principais páginas:
 Para clonar o repositório e rodar o sistema, utilize o seguinte comando:
 
 ```bash
-git clone https://github.com/Evertonmacedo054/SolucionaURB
+git clone https://github.com/Evertonmacedo054/SolucionaP2.git
 ```
